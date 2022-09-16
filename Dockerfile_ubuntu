@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+MAINTAINER wooyoung Kim <kiss7001@gmail.com>
+
+RUN apt-get update
+RUN apt-get install -y gcc vim
+
+COPY count_test.c /root/count_test.c
+COPY a.out /root/a.out
+
+WORKDIR /root
+
+RUN echo "test log1" >> /proc/1/fd/1
+CMD ["/root/a.out", "-D"]
+#CMD ["sleep","infinity"]
